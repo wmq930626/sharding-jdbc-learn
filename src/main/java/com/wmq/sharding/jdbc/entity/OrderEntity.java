@@ -1,4 +1,4 @@
-package com.wmq.shardinijdbclearn.entity;
+package com.wmq.sharding.jdbc.entity;
 
 
 import lombok.Data;

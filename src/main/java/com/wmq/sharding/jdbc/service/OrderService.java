@@ -1,14 +1,12 @@
-package com.wmq.shardinijdbclearn.service;
+package com.wmq.sharding.jdbc.service;
 
 
-import com.wmq.shardinijdbclearn.entity.OrderEntity;
-import com.wmq.shardinijdbclearn.mapper.OrderMapper;
+import com.wmq.sharding.jdbc.entity.OrderEntity;
+import com.wmq.sharding.jdbc.mapper.OrderMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
- 
 /**
  * Created by Kane on 2018/1/17.
  */

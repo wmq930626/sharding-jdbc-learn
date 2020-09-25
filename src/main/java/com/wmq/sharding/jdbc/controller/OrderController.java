@@ -1,15 +1,13 @@
-package com.wmq.shardinijdbclearn.controller;
+package com.wmq.sharding.jdbc.controller;
 
 
-import com.wmq.shardinijdbclearn.entity.OrderEntity;
-import com.wmq.shardinijdbclearn.service.OrderService;
+import com.wmq.sharding.jdbc.service.OrderService;
+import com.wmq.sharding.jdbc.entity.OrderEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * Created by Kane on 2018/1/17.

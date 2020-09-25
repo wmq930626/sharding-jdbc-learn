@@ -1,8 +1,7 @@
-package com.wmq.shardinijdbclearn;
+package com.wmq.sharding.jdbc;
 
-import com.wmq.shardinijdbclearn.entity.OrderEntity;
-import com.wmq.shardinijdbclearn.mapper.OrderMapper;
-import org.junit.jupiter.api.Order;
+import com.wmq.sharding.jdbc.entity.OrderEntity;
+import com.wmq.sharding.jdbc.mapper.OrderMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

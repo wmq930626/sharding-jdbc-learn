@@ -1,7 +1,7 @@
-package com.wmq.shardinijdbclearn.mapper;
+package com.wmq.sharding.jdbc.mapper;
 
 
-import com.wmq.shardinijdbclearn.entity.OrderEntity;
+import com.wmq.sharding.jdbc.entity.OrderEntity;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
