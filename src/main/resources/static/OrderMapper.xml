@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wmq.shardinijdbclearn.mapper.OrderMapper" >
+    <resultMap id="BaseResultMap" type="com.wmq.shardinijdbclearn.entity.OrderEntity" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="order_id" property="userId" jdbcType="BIGINT" />
+        <result column="user_id" property="userId" jdbcType="BIGINT" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, userName, passWord, user_sex, nick_name
+    </sql>
+
+ <!--   <select id="getAll" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM t_order
+    </select>-->
+
+<!--    <update id="update" parameterType="com.wmq.shardinijdbclearn.entity.UserEntity">
+        update t_order
+        set order_id =#{order_id} ,user_id=#{user_id},userName=#{userName},passWord=#{passWord},user_sex=#{userSex}
+        where id = #{id}
+    </update>-->
+
+    <insert id="insert" parameterType="com.wmq.shardinijdbclearn.entity.OrderEntity" >
+        INSERT INTO
+        t_order
+        (order_id,user_id,user_name)
+        VALUES
+        (#{order_id},#{user_id},#{userName})
+    </insert>
+
+</mapper>
