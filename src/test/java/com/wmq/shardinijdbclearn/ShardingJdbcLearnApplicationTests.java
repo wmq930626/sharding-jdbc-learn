@@ -2,6 +2,7 @@ package com.wmq.shardinijdbclearn;
 
 import com.wmq.shardinijdbclearn.entity.OrderEntity;
 import com.wmq.shardinijdbclearn.mapper.OrderMapper;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,14 @@ class ShardingJdbcLearnApplicationTests {
     @Test
     void testSelectAll(){
         List<OrderEntity> orderEntities = orderMapper.selectAll();
+        orderEntities.forEach(t-> System.out.println(t));
+    }
+
+    @Test
+    void testSelectByParam(){
+        OrderEntity orderEntity = new OrderEntity();
+        orderEntity.setOrderId("E16742467230");
+        List<OrderEntity> orderEntities = orderMapper.selectByParam(orderEntity);
         orderEntities.forEach(t-> System.out.println(t));
     }
 

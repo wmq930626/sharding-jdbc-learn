@@ -20,5 +20,8 @@ public interface OrderMapper {
 
     @Select("select * from t_order")
     List<OrderEntity> selectAll();
+
+    @Select("select * from t_order where order_id = #{orderId}")
+    List<OrderEntity> selectByParam(OrderEntity orderEntity);
 }
  
