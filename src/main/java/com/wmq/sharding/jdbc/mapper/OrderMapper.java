@@ -23,5 +23,16 @@ public interface OrderMapper {
 
     @Select("select * from t_order where order_id = #{orderId}")
     List<OrderEntity> selectByParam(OrderEntity orderEntity);
+
+    @Select("select * from t_order where id = #{id}")
+    OrderEntity selectOrderById(Long id);
+
+    @Select("<script>"+
+                "select * from t_order where id in" +
+                "<foreach  collection = 'orderIdList'  item = 'id'  open = '('  separator=',' close=')'>" +
+                    "#{id}" +
+                "</foreach>" +
+            "</script>")
+    List<OrderEntity> selectByOrderIdList(@Param("orderIdList") List<Long> idList);
 }
  
