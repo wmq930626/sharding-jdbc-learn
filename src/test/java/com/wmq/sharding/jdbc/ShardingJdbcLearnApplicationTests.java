@@ -86,10 +86,18 @@ class ShardingJdbcLearnApplicationTests {
     }
 
     @Test
-    void selectDict(){
+    void testSelectDict(){
         List<DictEntity> dictEntities = dictMapper.selectAll();
         dictEntities.forEach(t->{
             System.err.println(t.toString());
         });
+    }
+
+    @Test
+    void testUpdateDict(){
+        DictEntity dictEntity = new DictEntity();
+        dictEntity.setId(2L);
+        dictEntity.setDictName("待发货");
+        dictMapper.updateDictById(dictEntity);
     }
 }

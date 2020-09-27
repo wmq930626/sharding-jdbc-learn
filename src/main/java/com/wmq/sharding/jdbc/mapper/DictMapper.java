@@ -3,10 +3,7 @@ package com.wmq.sharding.jdbc.mapper;
 
 import com.wmq.sharding.jdbc.entity.DictEntity;
 import com.wmq.sharding.jdbc.entity.OrderEntity;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -24,6 +21,9 @@ public interface DictMapper {
 
     @Select("select * from t_dict")
     List<DictEntity> selectAll();
+
+    @Update({ "update t_dict set dict_name = #{dictName} where id = #{id}" })
+    int updateDictById(DictEntity dictEntity);
 
 
 }
