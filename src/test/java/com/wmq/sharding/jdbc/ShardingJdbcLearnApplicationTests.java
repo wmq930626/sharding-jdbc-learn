@@ -1,6 +1,8 @@
 package com.wmq.sharding.jdbc;
 
+import com.wmq.sharding.jdbc.entity.DictEntity;
 import com.wmq.sharding.jdbc.entity.OrderEntity;
+import com.wmq.sharding.jdbc.mapper.DictMapper;
 import com.wmq.sharding.jdbc.mapper.OrderMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 @SpringBootTest(classes = ShardingJdbcLearnApplication.class)
 @RunWith(SpringRunner.class)
@@ -17,6 +20,9 @@ class ShardingJdbcLearnApplicationTests {
 
     @Autowired
     private OrderMapper orderMapper;
+
+    @Autowired
+    private DictMapper dictMapper;
 
     @Test
     void testInsert() {
@@ -66,7 +72,24 @@ class ShardingJdbcLearnApplicationTests {
 
     @Test
     void testSelectById(){
-        OrderEntity orderEntity = orderMapper.selectOrderById(516365907895779320L);
+        OrderEntity orderEntity = orderMapper.selectOrderById(516722582712483840L);
         System.out.println(orderEntity);
+    }
+
+    @Test
+    void testInsertDict(){
+        DictEntity dictEntity = new DictEntity();
+        dictEntity.setDictType("order_status");
+        dictEntity.setDictCode(UUID.randomUUID().toString().replace("-",""));
+        dictEntity.setDictName("待付款");
+        dictMapper.insert(dictEntity);
+    }
+
+    @Test
+    void selectDict(){
+        List<DictEntity> dictEntities = dictMapper.selectAll();
+        dictEntities.forEach(t->{
+            System.err.println(t.toString());
+        });
     }
 }

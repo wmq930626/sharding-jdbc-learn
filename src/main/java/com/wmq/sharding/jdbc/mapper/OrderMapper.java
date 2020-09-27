@@ -18,7 +18,7 @@ public interface OrderMapper {
             "values(#{orderId},#{userId},#{userName})")
     int insert(OrderEntity user);
 
-    @Select("select * from t_order")
+    @Select("select * from t_order order by user_name asc")
     List<OrderEntity> selectAll();
 
     @Select("select * from t_order where order_id = #{orderId}")
