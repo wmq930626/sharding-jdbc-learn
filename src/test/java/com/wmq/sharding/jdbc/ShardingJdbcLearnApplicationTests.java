@@ -26,7 +26,7 @@ class ShardingJdbcLearnApplicationTests {
 
     @Test
     void testInsert() {
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 30; i++) {
             OrderEntity orderEntity = new OrderEntity();
             orderEntity.setUserName("Tom" + i);
             orderEntity.setOrderId("E167424672" + i);

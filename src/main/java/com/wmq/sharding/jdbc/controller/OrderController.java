@@ -19,18 +19,11 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
  
- /*   @RequestMapping("/getUsers")
-    public List<OrderEntity> getUsers() {
-        List<OrderEntity> orders=orderService.getOrders();
-        return orders;
-    }*/
- 
     //测试
-    @RequestMapping(value="update1")
-    public String updateTransactional(@RequestParam(value = "userId") String userId,
-                                    @RequestParam(value = "orderId") String orderId,
-                                    @RequestParam(value = "userName") String userName
-                                    ) {
+    @RequestMapping(value="submitOrder")
+    public String submitOrder(@RequestParam(value = "userId") String userId,
+                              @RequestParam(value = "orderId") String orderId,
+                              @RequestParam(value = "userName") String userName) {
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setUserId(userId);
         orderEntity.setOrderId(orderId);
