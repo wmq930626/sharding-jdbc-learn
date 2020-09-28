@@ -6,6 +6,7 @@ import com.wmq.sharding.jdbc.mapper.OrderMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Kane on 2018/1/17.
@@ -17,19 +18,25 @@ public class OrderService {
     @Autowired
     private OrderMapper orderMapper;
  
-  /*  public List<OrderEntity> getOrders() {
-        List<OrderEntity> orders = orderMapper.getAll();
-        return orders;
-    }
- */
-//    @Transactional(value="test1TransactionManager",rollbackFor = Exception.class,timeout=36000)  //说明针对Exception异常也进行回滚，如果不标注，则Spring 默认只有抛出 RuntimeException才会回滚事务
+    @Transactional(rollbackFor = Exception.class)
     public void insert(OrderEntity order) {
         try{
-            orderMapper.insert(order);
+            OrderEntity orderEntity1 = new OrderEntity();
+            orderEntity1.setUserName("Tomxxxxx01");
+            orderEntity1.setOrderId("E1674246723");
+            orderEntity1.setUserId("WMQ18600911");
+            orderMapper.insert(orderEntity1);
+            OrderEntity orderEntity2 = new OrderEntity();
+            orderEntity2.setUserName("Tomxxxxxx02");
+            orderEntity2.setOrderId("E1674246723");
+            orderEntity2.setUserId("WMQ18600911");
+            orderMapper.insert(orderEntity2);
+            //orderMapper.insert(order);
             log.error(String.valueOf(order));
+            throw new RuntimeException();
         }catch(Exception e){
             log.error("find exception!");
-            throw e;   // 事物方法中，如果使用trycatch捕获异常后，需要将异常抛出，否则事物不回滚。
+            throw e;
         }
  
     }

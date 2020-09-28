@@ -4,6 +4,7 @@ import com.wmq.sharding.jdbc.entity.DictEntity;
 import com.wmq.sharding.jdbc.entity.OrderEntity;
 import com.wmq.sharding.jdbc.mapper.DictMapper;
 import com.wmq.sharding.jdbc.mapper.OrderMapper;
+import com.wmq.sharding.jdbc.service.OrderService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ class ShardingJdbcLearnApplicationTests {
 
     @Autowired
     private DictMapper dictMapper;
+
+    @Autowired
+    private OrderService orderService;
 
     @Test
     void testInsert() {
@@ -99,5 +103,10 @@ class ShardingJdbcLearnApplicationTests {
         dictEntity.setId(2L);
         dictEntity.setDictName("待发货");
         dictMapper.updateDictById(dictEntity);
+    }
+
+    @Test
+    void testTrans(){
+        orderService.insert(new OrderEntity());
     }
 }
