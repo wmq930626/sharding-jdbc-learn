@@ -26,7 +26,7 @@ class ShardingJdbcLearnApplicationTests {
 
     @Test
     void testInsert() {
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 300; i++) {
             OrderEntity orderEntity = new OrderEntity();
             orderEntity.setUserName("Tom" + i);
             orderEntity.setOrderId("E167424672" + i);
@@ -81,7 +81,7 @@ class ShardingJdbcLearnApplicationTests {
         DictEntity dictEntity = new DictEntity();
         dictEntity.setDictType("order_status");
         dictEntity.setDictCode(UUID.randomUUID().toString().replace("-",""));
-        dictEntity.setDictName("待付款");
+        dictEntity.setDictName("待收货");
         dictMapper.insert(dictEntity);
     }
 

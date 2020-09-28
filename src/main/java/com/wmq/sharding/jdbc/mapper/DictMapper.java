@@ -9,12 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface DictMapper {
- 
-    /*
-    List<OrderEntity> getAll();
- 
-    void update(OrderEntity user);
-    */
+
     @Insert("insert into t_dict(dict_type,dict_code,dict_name) " +
             "values(#{dictType},#{dictCode},#{dictName})")
     int insert(DictEntity dictEntity);
