@@ -35,6 +35,7 @@ class ShardingJdbcLearnApplicationTests {
             orderEntity.setUserName("Tom" + i);
             orderEntity.setOrderId("E167424672" + i);
             orderEntity.setUserId("WMQ186009" + i);
+            orderEntity.setName("Tom" + i);
             orderMapper.insert(orderEntity);
         }
     }

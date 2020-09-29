@@ -9,8 +9,8 @@ import java.util.List;
 @Mapper
 public interface OrderMapper {
 
-    @Insert("insert into t_order(order_id,user_id,user_name) " +
-            "values(#{orderId},#{userId},#{userName})")
+    @Insert("insert into t_order(order_id,user_id,user_name,name_encrypt) " +
+            "values(#{orderId},#{userId},#{userName},#{name})")
     int insert(OrderEntity user);
 
     @Select("select * from t_order order by user_name asc")
