@@ -19,6 +19,9 @@ public interface OrderMapper {
     @Select("select * from t_order where order_id = #{orderId}")
     List<OrderEntity> selectByParam(OrderEntity orderEntity);
 
+    @Update("update t_order set user_name = #{userName} where id = #{id}")
+    int updateOrder(OrderEntity orderEntity);
+
     @Select("select * from t_order where id = #{id}")
     OrderEntity selectOrderById(Long id);
 

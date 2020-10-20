@@ -8,6 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+
+import static java.util.concurrent.Executors.*;
+
 /**
  * Created by Kane on 2018/1/17.
  */
@@ -17,6 +22,7 @@ public class OrderService {
  
     @Autowired
     private OrderMapper orderMapper;
+    private final ScheduledExecutorService scheduledExecutorService = newSingleThreadScheduledExecutor();
  
     @Transactional(rollbackFor = Exception.class)
     public void insert(OrderEntity order) {
@@ -31,7 +37,6 @@ public class OrderService {
             orderEntity2.setOrderId("E1674246723");
             orderEntity2.setUserId("WMQ18600911");
             orderMapper.insert(orderEntity2);
-            //orderMapper.insert(order);
             log.error(String.valueOf(order));
             throw new RuntimeException();
         }catch(Exception e){
