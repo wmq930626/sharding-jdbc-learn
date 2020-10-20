@@ -20,6 +20,8 @@ public class DictTransactionService {
     @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
     public int insertDictRequired(DictEntity dictEntity){
         int insert = dictMapper.insert(dictEntity);
+        if (dictEntity.getDictType().equals("REQUIRED"))
+            throw new RuntimeException("==========");
         return insert;
     }
 

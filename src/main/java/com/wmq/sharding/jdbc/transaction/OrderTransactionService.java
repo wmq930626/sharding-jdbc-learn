@@ -41,6 +41,21 @@ public class OrderTransactionService {
         return insert;
     }
 
+    @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
+    public int insertOrderRequired(OrderEntity orderEntity){
+        int insert = orderMapper.insert(orderEntity);
+        DictEntity dictEntity = new DictEntity();
+        dictEntity.setDictType("REQUIRED");
+        dictEntity.setDictCode(UUID.randomUUID().toString().replace("-",""));
+        dictEntity.setDictName("REQUIRED ");
+        try {
+            dictTransactionService.insertDictRequired(dictEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return insert;
+    }
+
     /**
      * 外层有事务，内层使用NEVER事务隔离级别
      * 抛出异常
